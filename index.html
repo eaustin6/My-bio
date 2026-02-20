@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arifur Rahman | Finance × Anime</title>
+    <meta name="description"
+        content="Personal profile of Niaz Nafis  - Developer, Finance Enthusiast & Anime Devotee.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Space+Grotesk:wght@300;500;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <!-- ===== LAYERED BACKGROUND ===== -->
+    <div class="bg-base"></div>
+    <canvas id="particle-canvas"></canvas>
+    <div class="bg-scanlines"></div>
+    <div class="bg-grid-wrap">
+        <div class="bg-grid"></div>
+    </div>
+    <div class="bg-vignette"></div>
+
+    <!-- ===== ANIME CHARACTER SILHOUETTE ===== -->
+    <div class="anime-deco-left">
+        <svg viewBox="0 0 220 600" xmlns="http://www.w3.org/2000/svg" class="anime-silhouette">
+            <!-- Stylized anime character silhouette - financial analyst -->
+            <defs>
+                <linearGradient id="charGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.15" />
+                    <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0.05" />
+                </linearGradient>
+                <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                    <feMerge>
+                        <feMergeNode in="coloredBlur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+            <!-- head -->
+            <ellipse cx="110" cy="80" rx="45" ry="55" fill="url(#charGrad)" filter="url(#glow)" stroke="#ffd70022"
+                stroke-width="1" />
+            <!-- hair strands -->
+            <path d="M 70 50 Q 60 20 80 10 Q 100 0 110 15" fill="none" stroke="#ffd70033" stroke-width="2" />
+            <path d="M 150 50 Q 160 20 140 10 Q 120 0 110 15" fill="none" stroke="#ffd70033" stroke-width="2" />
+            <path d="M 65 80 Q 50 100 55 130" fill="none" stroke="#ffd70022" stroke-width="3" />
+            <!-- body/suit -->
+            <path d="M 70 130 L 50 350 L 170 350 L 150 130 Z" fill="url(#charGrad)" stroke="#00d4ff22"
+                stroke-width="1" />
+            <!-- jacket lapels -->
+            <path d="M 90 140 L 110 200 L 130 140" fill="none" stroke="#ffd70044" stroke-width="1.5" />
+            <!-- tie -->
+            <path d="M 108 150 L 104 230 L 110 240 L 116 230 L 112 150 Z" fill="none" stroke="#ffd70055"
+                stroke-width="1" />
+            <!-- arms -->
+            <path d="M 70 135 Q 30 180 25 260 L 50 260 Q 55 200 80 165 Z" fill="url(#charGrad)" stroke="#00d4ff22"
+                stroke-width="1" />
+            <path d="M 150 135 Q 190 180 195 260 L 170 260 Q 165 200 140 165 Z" fill="url(#charGrad)" stroke="#00d4ff22"
+                stroke-width="1" />
+            <!-- hands holding tablet -->
+            <rect x="30" y="255" width="60" height="40" rx="5" fill="url(#charGrad)" stroke="#00d4ff44"
+                stroke-width="1" />
+            <line x1="35" y1="268" x2="85" y2="268" stroke="#ffd70033" stroke-width="1" />
+            <line x1="35" y1="278" x2="75" y2="278" stroke="#ffd70022" stroke-width="1" />
+            <!-- legs -->
+            <path d="M 80 350 L 75 520 L 100 520 L 110 380 L 120 520 L 145 520 L 140 350 Z" fill="url(#charGrad)"
+                stroke="#00d4ff22" stroke-width="1" />
+            <!-- glow dots orbiting -->
+            <circle cx="110" cy="80" r="3" fill="#ffd700" opacity="0.6" filter="url(#glow)" />
+            <circle cx="50" cy="200" r="2" fill="#00d4ff" opacity="0.5" filter="url(#glow)" />
+            <circle cx="170" cy="200" r="2" fill="#00d4ff" opacity="0.5" filter="url(#glow)" />
+            <!-- Japanese kanji -->
+            <text x="108" y="580" text-anchor="middle" font-family="Noto Sans JP" font-size="22" fill="#ffd700"
+                opacity="0.25">経済</text>
+        </svg>
+    </div>
+
+    <!-- ===== FLOATING SYMBOLS (anime-finance) ===== -->
+    <div class="float-symbols" id="float-symbols"></div>
+
+    <!-- ===== DATA STREAMS ===== -->
+    <div class="data-streams" id="data-streams"></div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+
+        <!-- Live Ticker -->
+        <div class="ticker-wrap glass-dark">
+            <div class="ticker-label">LIVE</div>
+            <div class="ticker-track">
+                <div class="ticker">
+                    <span class="t-item">ACADEMIC CAPITAL&nbsp;<strong class="gold">D.U. GRADUATE</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">MARKET SENTIMENT&nbsp;<strong class="green">▲ BULLISH +5.2%</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">SOCIAL EQUITY&nbsp;<strong class="gold">+25% GROWTH</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">ANIME PROTOCOL&nbsp;<strong class="cyan">ACTIVE [99.9%]</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">OBJECTIVE&nbsp;<strong class="gold">SYNTHESIZING MARKETS</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">ACADEMIC CAPITAL&nbsp;<strong class="gold">D.U. GRADUATE</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">MARKET SENTIMENT&nbsp;<strong class="green">▲ BULLISH +5.2%</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">SOCIAL EQUITY&nbsp;<strong class="gold">+25% GROWTH</strong></span>
+                    <span class="t-sep">◆</span>
+                    <span class="t-item">ANIME PROTOCOL&nbsp;<strong class="cyan">ACTIVE [99.9%]</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header>
+            <div class="header-inner glass">
+                <div class="header-top-row">
+                    <div class="status-badge"><span class="pulse-dot"></span>LIVE OPERATIONS</div>
+                    <div class="jp-text">経済学者 / アニメ</div>
+                </div>
+                <h1 class="glitch" data-text="Niaz Nafis">Niaz Nafis</h1>
+                <p class="objective" id="objective-text">Forecasting  Markets with Anime Precision</p>
+                <div class="header-deco">
+                    <div class="deco-line"></div>
+                    <div class="deco-diamond">◆</div>
+                    <div class="deco-line"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats Row -->
+        <div class="stats-row">
+            <div class="stat-chip glass"><span class="s-num" data-target="98">0</span><span class="s-lbl">Market
+                    IQ</span></div>
+            <div class="stat-chip glass"><span class="s-num" data-target="42">0</span><span
+                    class="s-lbl">Projects</span></div>
+            <div class="stat-chip glass"><span class="s-num green" data-target="100">0</span><span class="s-lbl">Anime
+                    Affinity %</span></div>
+            <div class="stat-chip glass"><span class="s-num gold">S</span><span class="s-lbl">Rank</span></div>
+        </div>
+
+        <!-- Main grid -->
+        <div class="main-grid">
+
+            <!-- LEFT COLUMN -->
+            <div class="col-left">
+
+                <!-- About -->
+                <section class="card glass">
+                    <div class="card-header-line">
+                        <i data-lucide="user-circle-2" class="icon-gold"></i>
+                        <h2>ABOUT ME</h2>
+                        <span class="card-badge">BIO.EXE</span>
+                    </div>
+                    <p id="bio-text" class="bio-p"></p>
+                    <!-- DSE Daily Trending Bar Chart -->
+                    <div class="mini-chart" id="dse-chart">
+                        <div class="chart-label">DSE DAILY TRENDING <span class="chart-date" id="dse-date"></span></div>
+                        <div class="dse-legend">
+                            <span class="dse-leg-item"><span class="dot-up"></span> Gainer</span>
+                            <span class="dse-leg-item"><span class="dot-down"></span> Decliner</span>
+                        </div>
+                        <div class="dse-bars" id="dse-bars"></div>
+                        <div class="dse-labels" id="dse-labels"></div>
+                    </div>
+                </section>
+
+                <!-- Social Links -->
+                <section class="socials-grid">
+                    <a href="#" class="social-card glass facebook" id="link-fb" target="_blank">
+                        <i data-lucide="facebook"></i>
+                        <span>Facebook</span>
+                        <div class="sc-arrow">→</div>
+                    </a>
+                    <a href="#" class="social-card glass telegram" id="link-tg" target="_blank">
+                        <i data-lucide="send"></i>
+                        <span>Telegram</span>
+                        <div class="sc-arrow">→</div>
+                    </a>
+                    <a href="#" class="social-card glass instagram" id="link-ig" target="_blank">
+                        <i data-lucide="instagram"></i>
+                        <span>Instagram</span>
+                        <div class="sc-arrow">→</div>
+                    </a>
+                    <a href="#" class="social-card glass website" id="link-url" target="_blank">
+                        <i data-lucide="globe"></i>
+                        <span>Website</span>
+                        <div class="sc-arrow">→</div>
+                    </a>
+                    <a href="#" class="social-card glass github" id="link-gh" target="_blank">
+                        <i data-lucide="github"></i>
+                        <span>GitHub</span>
+                        <div class="sc-arrow">→</div>
+                    </a>
+                    <a href="#" class="social-card glass linkedin" id="link-li" target="_blank">
+                        <i data-lucide="linkedin"></i>
+                        <span>LinkedIn</span>
+                        <div class="sc-arrow">→</div>
+                    </a>
+                </section>
+
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div class="col-right">
+
+                <!-- Academic Path -->
+                <section class="card glass">
+                    <div class="card-header-line">
+                        <i data-lucide="graduation-cap" class="icon-gold"></i>
+                        <h2>ACADEMIC PATH</h2>
+                        <span class="card-badge">EDU.LOG</span>
+                    </div>
+                    <div class="timeline">
+                        <div class="tl-item">
+                            <div class="tl-dot glow-gold"></div>
+                            <div class="tl-body">
+                                <div class="tl-tag">UNIVERSITY</div>
+                                <div class="tl-val" id="university-name">University of Dhaka</div>
+                                <div class="tl-sub">Economics &amp; Finance</div>
+                            </div>
+                        </div>
+                        <div class="tl-item">
+                            <div class="tl-dot glow-blue"></div>
+                            <div class="tl-body">
+                                <div class="tl-tag">SCHOOL</div>
+                                <div class="tl-val" id="school-name">Dhaka Residential Model College</div>
+                                <div class="tl-sub">Science &amp; Mathematics</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Equity growth bar -->
+                    <div class="equity-bar-section">
+                        <div class="eq-label">KNOWLEDGE EQUITY GROWTH</div>
+                        <div class="eq-bar-bg">
+                            <div class="eq-bar" id="eq-bar"></div>
+                        </div>
+                        <div class="eq-pct" id="eq-pct">0%</div>
+                    </div>
+                </section>
+
+                <!-- Global Finance & Marketing News Console -->
+                <section class="card glass terminal-card shimmer-border">
+                    <div class="terminal-head">
+                        <div class="tdots"><span></span><span></span><span></span></div>
+                        <div class="ttitle">CONSOLE — GLOBAL FINANCE & MARKET NEWS</div>
+                        <div class="terminal-live-dot"></div>
+                    </div>
+                    <div class="terminal-body" id="terminal-body">
+                        <!-- lines injected by JS -->
+                    </div>
+                </section>
+
+                <!-- GitHub Stats -->
+                <section class="card glass github-stats-card">
+                    <div class="card-header-line">
+                        <i data-lucide="github" class="icon-gold"></i>
+                        <h2>GITHUB STATS</h2>
+                        <span class="card-badge">DEV.LOG</span>
+                    </div>
+                    <div class="gh-stats-row" id="gh-stats-row">
+                        <div class="gh-stat"><span class="gh-num" id="gh-repos">&mdash;</span><span
+                                class="gh-lbl">Repos</span></div>
+                        <div class="gh-stat"><span class="gh-num" id="gh-followers">&mdash;</span><span
+                                class="gh-lbl">Followers</span></div>
+                        <div class="gh-stat"><span class="gh-num" id="gh-following">&mdash;</span><span
+                                class="gh-lbl">Following</span></div>
+                    </div>
+                    <div class="gh-contrib-label">CONTRIBUTION ACTIVITY (LAST 52 WEEKS)</div>
+                    <div class="gh-contrib-grid" id="gh-contrib-grid"></div>
+                    <div class="gh-lang-section">
+                        <div class="gh-lang-label">TOP LANGUAGES</div>
+                        <div class="gh-langs" id="gh-langs"></div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+
+
+    </div><!-- /container -->
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+
+</html>
