@@ -202,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderContribGrid();
     renderGHLangs();
     renderLinkedInFeed();
+    renderProjects();
 });
 
 /* ─── APPLY DATA ────────────────────────────── */
@@ -726,6 +727,76 @@ function renderLinkedInFeed() {
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
         }, 300 + i * 200);
+    });
+}
+
+/* ─── PROJECT DATA ──────────────────────────── */
+const PROJECTS = [
+    {
+        title: "Algorithmic Trading Bot",
+        desc: "A Python-based high-frequency trading bot analyzing market sentiment and executing trades via Binance API.",
+        tech: ["Python", "Pandas", "Binance API"],
+        link: "#",
+        color: "var(--gold)"
+    },
+    {
+        title: "Anime Sentiment Analysis",
+        desc: "NLP model trained on Reddit discussions to predict anime popularity trends before official release.",
+        tech: ["Python", "NLTK", "Scikit-learn"],
+        link: "#",
+        color: "var(--blue)"
+    },
+    {
+        title: "Portfolio Optimization",
+        desc: "R script implementing Modern Portfolio Theory (MPT) to generate efficient frontiers for DSE stocks.",
+        tech: ["R", "ggplot2", "Quantmod"],
+        link: "#",
+        color: "var(--green)"
+    },
+    {
+        title: "Financial Dashboard",
+        desc: "Real-time web dashboard visualizing global market indices and crypto assets with glassmorphism UI.",
+        tech: ["JS", "CSS3", "Chart.js"],
+        link: "#",
+        color: "var(--purple)"
+    }
+];
+
+/* ─── RENDER PROJECTS ───────────────────────── */
+function renderProjects() {
+    const container = document.getElementById("projects-grid");
+    if (!container) return;
+
+    PROJECTS.forEach((proj, i) => {
+        const card = document.createElement("a");
+        card.href = proj.link;
+        card.className = "project-card glass";
+        card.target = "_blank";
+
+        let tagsHtml = "";
+        proj.tech.forEach(t => {
+            tagsHtml += `<span class="proj-tag">${t}</span>`;
+        });
+
+        card.innerHTML = `
+            <div class="proj-header">
+                <h3 style="color:${proj.color}">${proj.title}</h3>
+                <div class="proj-icon">↗</div>
+            </div>
+            <p class="proj-desc">${proj.desc}</p>
+            <div class="proj-tags">${tagsHtml}</div>
+        `;
+
+        // Animation
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        setTimeout(() => {
+            card.style.transition = "all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        }, 100 + i * 150);
+
+        container.appendChild(card);
     });
 }
 
