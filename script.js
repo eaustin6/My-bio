@@ -202,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     renderContribGrid();
     renderGHLangs();
     renderLinkedInFeed();
+    renderProjects();
 });
 
 /* ─── APPLY DATA ────────────────────────────── */
@@ -726,6 +727,97 @@ function renderLinkedInFeed() {
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
         }, 300 + i * 200);
+    });
+}
+
+/* ─── PROJECT DATA ──────────────────────────── */
+const PROJECTS = [
+    {
+        title: "Algorithmic Trading Bot",
+        desc: "A Python-based high-frequency trading bot analyzing market sentiment and executing trades via Binance API.",
+        tech: ["Python", "Pandas", "Binance API"],
+        link: "#",
+        color: "var(--gold)"
+    },
+    {
+        title: "Anime Sentiment Analysis",
+        desc: "NLP model trained on Reddit discussions to predict anime popularity trends before official release.",
+        tech: ["Python", "NLTK", "Scikit-learn"],
+        link: "#",
+        color: "var(--blue)"
+    },
+    {
+        title: "Portfolio Optimization",
+        desc: "R script implementing Modern Portfolio Theory (MPT) to generate efficient frontiers for DSE stocks.",
+        tech: ["R", "ggplot2", "Quantmod"],
+        link: "#",
+        color: "var(--green)"
+    },
+    {
+        title: "Financial Dashboard",
+        desc: "Real-time web dashboard visualizing global market indices and crypto assets with glassmorphism UI.",
+        tech: ["JS", "CSS3", "Chart.js"],
+        link: "#",
+        color: "var(--purple)"
+    }
+];
+
+/* ─── RENDER PROJECTS ───────────────────────── */
+function renderProjects() {
+    const container = document.getElementById("projects-grid");
+    if (!container) return;
+
+    PROJECTS.forEach((proj, i) => {
+        const card = document.createElement("a");
+        card.href = proj.link;
+        card.className = "project-card glass";
+        card.target = "_blank";
+
+        // Header
+        const header = document.createElement("div");
+        header.className = "proj-header";
+
+        const h3 = document.createElement("h3");
+        h3.style.color = proj.color;
+        h3.textContent = proj.title;
+
+        const icon = document.createElement("div");
+        icon.className = "proj-icon";
+        icon.textContent = "↗";
+
+        header.appendChild(h3);
+        header.appendChild(icon);
+        card.appendChild(header);
+
+        // Description
+        const desc = document.createElement("p");
+        desc.className = "proj-desc";
+        desc.textContent = proj.desc;
+        card.appendChild(desc);
+
+        // Tags
+        const tagsContainer = document.createElement("div");
+        tagsContainer.className = "proj-tags";
+
+        proj.tech.forEach(t => {
+            const tag = document.createElement("span");
+            tag.className = "proj-tag";
+            tag.textContent = t;
+            tagsContainer.appendChild(tag);
+        });
+
+        card.appendChild(tagsContainer);
+
+        // Animation
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        setTimeout(() => {
+            card.style.transition = "all 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+        }, 100 + i * 150);
+
+        container.appendChild(card);
     });
 }
 
