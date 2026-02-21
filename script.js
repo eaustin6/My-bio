@@ -773,19 +773,40 @@ function renderProjects() {
         card.className = "project-card glass";
         card.target = "_blank";
 
-        let tagsHtml = "";
+        // Header
+        const header = document.createElement("div");
+        header.className = "proj-header";
+
+        const h3 = document.createElement("h3");
+        h3.style.color = proj.color;
+        h3.textContent = proj.title;
+
+        const icon = document.createElement("div");
+        icon.className = "proj-icon";
+        icon.textContent = "↗";
+
+        header.appendChild(h3);
+        header.appendChild(icon);
+        card.appendChild(header);
+
+        // Description
+        const desc = document.createElement("p");
+        desc.className = "proj-desc";
+        desc.textContent = proj.desc;
+        card.appendChild(desc);
+
+        // Tags
+        const tagsContainer = document.createElement("div");
+        tagsContainer.className = "proj-tags";
+
         proj.tech.forEach(t => {
-            tagsHtml += `<span class="proj-tag">${t}</span>`;
+            const tag = document.createElement("span");
+            tag.className = "proj-tag";
+            tag.textContent = t;
+            tagsContainer.appendChild(tag);
         });
 
-        card.innerHTML = `
-            <div class="proj-header">
-                <h3 style="color:${proj.color}">${proj.title}</h3>
-                <div class="proj-icon">↗</div>
-            </div>
-            <p class="proj-desc">${proj.desc}</p>
-            <div class="proj-tags">${tagsHtml}</div>
-        `;
+        card.appendChild(tagsContainer);
 
         // Animation
         card.style.opacity = "0";
