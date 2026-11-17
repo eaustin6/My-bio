@@ -159,6 +159,14 @@
                         <span class="card-badge">BIO.EXE</span>
                     </div>
                     <p id="bio-text" class="bio-p"></p>
+
+                    <div class="cv-section">
+                        <a href="#" class="btn-cv">
+                            <i data-lucide="download"></i>
+                            <span>DOWNLOAD RESUME</span>
+                        </a>
+                    </div>
+
                     <!-- DSE Daily Trending Bar Chart -->
                     <div class="mini-chart" id="dse-chart">
                         <div class="chart-label">DSE DAILY TRENDING <span class="chart-date" id="dse-date"></span></div>
@@ -203,6 +211,20 @@
                         <span>LinkedIn</span>
                         <div class="sc-arrow">→</div>
                     </a>
+                </section>
+
+                <!-- LinkedIn Feed -->
+                <section class="card glass li-feed-card" id="li-feed-card">
+                    <div class="card-header-line">
+                        <i data-lucide="linkedin" class="icon-gold"></i>
+                        <h2>LATEST UPDATES</h2>
+                        <span class="card-badge">FEED.LOG</span>
+                    </div>
+                    <div class="li-feed" id="li-feed"></div>
+                    <div class="li-note">
+                        <i data-lucide="info" style="width:12px;height:12px"></i>
+                        <span>Simulated feed using <code>LINKEDIN_POSTS</code> array in JS.</span>
+                    </div>
                 </section>
 
             </div>
@@ -285,6 +307,18 @@
 
 
 
+        <!-- Projects Section -->
+        <section class="projects-section">
+            <div class="card glass">
+                <div class="card-header-line">
+                    <i data-lucide="code-2" class="icon-gold"></i>
+                    <h2>FEATURED PROJECTS</h2>
+                    <span class="card-badge">DEV.LOG</span>
+                </div>
+                <div class="projects-grid" id="projects-grid"></div>
+            </div>
+        </section>
+
     </div><!-- /container -->
 
     <script src="script.js"></script>
@@ -293,5 +327,3 @@
 
 
 </html>
-
-
